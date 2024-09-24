@@ -1,0 +1,53 @@
+{
+  "name": "@hashgraph/hedera-hardhat-plugin",
+  "version": "1.0.0",
+  "description": "Hedera Hardhat TypeScript plugin",
+  "repository": "github:hashgraph/hedera-hardhat-plugin",
+  "author": "2024 Hedera Hashgraph, LLC",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "ethereum",
+    "smart-contracts",
+    "hardhat",
+    "hardhat-plugin"
+  ],
+  "scripts": {
+    "lint:fix": "prettier --write 'src/**/*.{js,ts}' 'test/**/*.{js,ts}' && tslint --fix --config tslint.json --project tsconfig.json",
+    "lint": "tslint --config tslint.json --project tsconfig.json",
+    "test": "mocha --exit --recursive 'test/**/*.test.ts'",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist/src/",
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/fs-extra": "^5.0.4",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^14.14.14",
+    "chai": "^4.2.0",
+    "ethers": "^6.13.2",
+    "hardhat": "^2.0.0",
+    "mocha": "^7.1.2",
+    "prettier": "2.0.5",
+    "ts-node": "^9.1.1",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^4.0.3"
+  },
+  "peerDependencies": {
+    "ethers": "^6.11.2",
+    "hardhat": "^2.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.7"
+  }
+}
