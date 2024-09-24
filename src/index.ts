@@ -20,7 +20,7 @@ import { extendConfig, extendProvider } from 'hardhat/config';
 import { HardhatConfig, HardhatUserConfig } from 'hardhat/types';
 
 import { MirrornodeClient } from './client';
-import { HederaMockProvider } from './hedera-provider';
+import { HederaProvider } from './hedera-provider';
 
 export interface HeaderaHardhatConfig extends HardhatConfig {
   hedera: {
@@ -37,7 +37,7 @@ export interface HeaderaHardhatUserConfig extends HardhatUserConfig {
 // @ts-ignore
 extendProvider(async (provider, config: HeaderaHardhatConfig, network) => {
   console.trace(config, network);
-  return new HederaMockProvider(provider, new MirrornodeClient(config.hedera.mirrornode));
+  return new HederaProvider(provider, new MirrornodeClient(config.hedera.mirrornode));
 });
 
 // @ts-ignore

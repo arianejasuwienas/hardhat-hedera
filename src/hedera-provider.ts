@@ -28,7 +28,7 @@ import { accountIdToHex, getAccountStorageSlot } from './utils';
 
 export const HTS_ADDRESS = '0x0000000000000000000000000000000000000167';
 
-export class HederaMockProvider extends ProviderWrapper {
+export class HederaProvider extends ProviderWrapper {
   private actionDone: string[] = [];
   private requestId = 0;
 
@@ -50,7 +50,7 @@ export class HederaMockProvider extends ProviderWrapper {
       method: 'eth_getCode',
       params: [HTS_ADDRESS, 'latest'],
     });
-    if (['0xfe', '0x'].includes(current.result)) {
+    if (!['0xfe', '0x'].includes(current.result)) {
       return;
     }
     await this._wrappedProvider.request({
