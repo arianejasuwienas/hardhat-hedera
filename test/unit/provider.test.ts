@@ -45,7 +45,7 @@ describe('HederaProvider', function () {
         method: 'eth_getCode',
         params: [HTS_ADDRESS, 'latest'],
       })
-      .resolves({ result: '0x' });
+      .resolves('0x');
     mockWrappedProvider.request
       .withArgs({
         method: 'hardhat_setCode',
@@ -70,7 +70,7 @@ describe('HederaProvider', function () {
         method: 'eth_getCode',
         params: [HTS_ADDRESS, 'latest'],
       })
-      .resolves({ result: '0xfefefefefefefefefefefefefeefef' });
+      .resolves('0xfefefefefefefefefefefefefeefef');
     await provider.request({ method: 'eth_call', params: [] });
     sinon.assert.calledTwice(mockWrappedProvider.request);
     sinon.assert.neverCalledWith(mockWrappedProvider.request, {
@@ -88,7 +88,7 @@ describe('HederaProvider', function () {
         method: 'eth_getCode',
         params: [HTS_ADDRESS, 'latest'],
       })
-      .resolves({ result: '0xfe' });
+      .resolves('0xfe');
     mockMirrornode.getAccount.resolves({ account: '0.0.123' });
     mockMirrornode.getBalanceOfToken.resolves(balanceResult);
     await provider.request({

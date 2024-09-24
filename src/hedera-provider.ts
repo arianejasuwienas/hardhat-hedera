@@ -50,7 +50,7 @@ export class HederaProvider extends ProviderWrapper {
       method: 'eth_getCode',
       params: [HTS_ADDRESS, 'latest'],
     });
-    if (!['0xfe', '0x'].includes(current.result)) {
+    if (!['0xfe', '0x'].includes(current)) {
       return;
     }
     await this._wrappedProvider.request({
@@ -158,7 +158,7 @@ export class HederaProvider extends ProviderWrapper {
     await this.assignValueToSlot(
       target,
       getAccountStorageSlot('allowance(address,address)', [spenderId, ownerId]),
-      `0x${(13).toString(16).padStart(64, '0')}` // Fixme
+      `0x${allowance.toString(16).padStart(64, '0')}`
     );
     this.actionDone.push(`allowance_${owner}_${spender}`);
   }
@@ -180,7 +180,7 @@ export class HederaProvider extends ProviderWrapper {
       value.length > 31 ? ['0', value.length * 2 + 1] : [Buffer.from(value).toString('hex'), value.length * 2];
     const storageMemory = `${hexStr.padEnd(64 - 2, '0')}${lenByte.toString(16).padStart(2, '0')}`;
     await this.assignValueToSlot(target, `0x${initialSlot.toString(16)}`, `0x${storageMemory}`);
-    for (let i = 0; i < value.length / 64 + 1; i++) {
+    for (let i = 0; i < (value.length + 31) / 32; i++) {
       const nextSlot = BigInt(keccak256(`0x${initialSlot.toString(16).padStart(64, '0')}`)) + BigInt(i);
       await this.assignValueToSlot(
         target,

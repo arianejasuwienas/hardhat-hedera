@@ -36,7 +36,6 @@ export interface HeaderaHardhatUserConfig extends HardhatUserConfig {
 
 // @ts-ignore
 extendProvider(async (provider, config: HeaderaHardhatConfig, network) => {
-  console.trace(config, network);
   return new HederaProvider(provider, new MirrornodeClient(config.hedera.mirrornode));
 });
 

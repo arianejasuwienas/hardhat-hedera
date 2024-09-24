@@ -58,6 +58,6 @@ describe('RPC', function () {
       accountAddress,
       spenderAddress,
     });
-    expect(res).to.be.equal(13);
+    expect(res).to.be.equal(0);
   });
 });

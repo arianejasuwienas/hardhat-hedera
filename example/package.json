@@ -1,5 +1,5 @@
 {
-  "name": "hedera-example-hardhat--viem-project",
+  "name": "hedera-example-hardhat-hedera-project",
   "version": "1.0.0",
   "description": "This is a example hardhat viem project",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "local-node": "npx @hashgraph/hedera-local restart -d"
   },
   "dependencies": {
-    "arianejasuwienas-hardhat-hedera": "^0.0.3",
+    "@hashgraph/hedera-hardhat-plugin": "^1.0.0",
     "@hashgraph/hedera-local": "^2.25.2",
     "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
     "dotenv": "^16.0.3"
